@@ -1743,3 +1743,9 @@ body {
         font-size: 1.5rem;
     }
 }
+
+@media (max-width: 968px) {
+    #tuti-tab .grid2 {
+        grid-template-columns: 1fr !important;
+    }
+}

@@ -1,5 +1,27 @@
 // Timeline data organized by year
 const timelineData = {
+    "1992": [
+        {
+            date: "Junio",
+            title: "Llegada de Internet (Ecuanet)",
+            description: "La conexión de los nodos de Ecuanet marcó el ingreso formal del Ecuador a Internet, interconectando universidades y entidades financieras con redes globales.",
+            category: "tech"
+        },
+        {
+            date: "10 de agosto",
+            title: "Ley Especial de Telecomunicaciones",
+            description: "Regulación del sector y creación de CONATEL y SUPERTEL. Permitió la entrada de operadoras móviles privadas al país.",
+            category: "legal"
+        }
+    ],
+    "2000": [
+        {
+            date: "5 de septiembre",
+            title: "Acceso Universal",
+            description: "Declaración del Acceso Universal como Política de Estado para impulsar la difusión del internet a nivel nacional.",
+            category: "legal"
+        }
+    ],
     "2002": [
         {
             date: "18 de junio",
@@ -23,6 +45,20 @@ const timelineData = {
                 "Agosto 2009: Creación del MINTEL",
                 "Mayo 2009: El SRI inicia la emisión de comprobantes electrónicos"
             ],
+            category: "legal"
+        },
+        {
+            date: "11 de mayo",
+            title: "Sistema de Gestión Documental QUIPUX",
+            description: "Uso obligatorio de gestión documental electrónica en la Administración Pública para reducir el uso de papel y mejorar la trazabilidad.",
+            category: "tech"
+        },
+    ],
+    "2013": [
+        {
+            date: "17 de mayo",
+            title: "Inicio Facturación Electrónica SRI",
+            description: "Inicia la obligatoriedad por grupos para el uso de comprobantes digitales, marcando la transición definitiva hacia la contabilidad digital.",
             category: "legal"
         }
     ],
@@ -50,13 +86,27 @@ const timelineData = {
             category: "fintech"
         }
     ],
+    "2018": [
+        {
+            date: "23 de octubre",
+            title: "Ley de Optimización de Trámites",
+            description: "Prohibición de exigir documentos físicos que el Estado ya posee, estableciendo el principio de eficiencia administrativa digital.",
+            category: "legal"
+        }
+    ],
     "2019": [
         {
             date: "2019",
             title: "Desarrollo de App Nativa - Banco Pichincha",
             description: "El banco inicia el desarrollo de su aplicativo móvil propio. En ese momento, contaban con aproximadamente 700,000 clientes digitales.",
             category: "tech"
-        }
+        },
+        {
+            date: "6 de noviembre",
+            title: "Portal GOB.EC",
+            description: "Lanzamiento de la plataforma centralizada de servicios ciudadanos y catastro nacional de trámites en un solo sitio.",
+            category: "tech"
+        },
     ],
     "2020": [
         {
@@ -69,6 +119,12 @@ const timelineData = {
             date: "16 de marzo",
             title: "El 'Big Bang' Digital - Pandemia",
             description: "Con el cierre de agencias y corresponsales, la pandemia actuó como un acelerador forzoso. Entre mayo y septiembre, las transferencias electrónicas crecieron un 35%.",
+            category: "tech"
+        },
+        {
+            date: "22 de junio",
+            title: "Sistema Judicial (SATJE)",
+            description: "Implementación de la plataforma informática para la gestión, registro y seguimiento de causas judiciales en línea.",
             category: "tech"
         },
         {
@@ -208,11 +264,15 @@ const timelineData = {
 
 // Ordered array of years to control display order
 const orderedYears = [
+    "1992",
+    "2000",
     "2002",
     "2008-2009",
+    "2013",
     "2014",
     "2016",
     "2017",
+    "2018",
     "2019",
     "2020",
     "2021",
@@ -1193,15 +1253,218 @@ function initializeDigitalizationRadarChart() {
     };
 
     new Chart(ctx, config);
-}
+};
 
-// Initialize
+
+
+
+// --- DATOS 
+const FINANCIAL_DATA = {
+    TUTI: [
+        { year: 2019, ventas: 2.49, perdida: -3.53, activo: 2.12, inventario: 0, pasivo: 6.36, patrimonio: -3.52 },
+        { year: 2020, ventas: 28.51, perdida: -5.92, activo: 14.34, inventario: 0, pasivo: 21.53, patrimonio: -7.19 },
+        { year: 2021, ventas: 85.75, perdida: -6.77, activo: 28.30, inventario: 14.34, pasivo: 44.57, patrimonio: -16.27 },
+        { year: 2022, ventas: 240.09, perdida: -6.75, activo: 99.49, inventario: 19.57, pasivo: 122.50, patrimonio: -23.01 },
+        { year: 2023, ventas: 446.67, perdida: -6.05, activo: 161.80, inventario: 29.59, pasivo: 190.38, patrimonio: -28.58 },
+        { year: 2024, ventas: 693.24, perdida: 0.63, activo: 261.96, inventario: 42.89, pasivo: 289.29, patrimonio: -27.33 }
+    ],
+    FAVORITA: [
+        { year: 2019, ventas: 2103.83, perdida: 155.76, activo: 2051.46, inventario: 252.00, pasivo: 662.14, patrimonio: 1389.32 },
+        { year: 2020, ventas: 2170.60, perdida: 147.50, activo: 2121.86, inventario: 246.04, pasivo: 638.89, patrimonio: 1482.97 },
+        { year: 2021, ventas: 2178.78, perdida: 143.82, activo: 2343.21, inventario: 244.95, pasivo: 771.98, patrimonio: 1571.22 },
+        { year: 2022, ventas: 2355.58, perdida: 152.68, activo: 2480.40, inventario: 295.50, pasivo: 800.38, patrimonio: 1680.02 },
+        { year: 2023, ventas: 2483.06, perdida: 165.23, activo: 2564.38, inventario: 292.69, pasivo: 778.41, patrimonio: 1785.97 },
+        { year: 2024, ventas: 2546.10, perdida: 157.78, activo: 2694.15, inventario: 314.09, pasivo: 826.48, patrimonio: 1867.67 }
+    ],
+    TIA: [
+        { year: 2019, ventas: 707.46, perdida: 28.98, activo: 490.70, inventario: 68.30, pasivo: 390.15, patrimonio: 100.55 },
+        { year: 2020, ventas: 701.58, perdida: 29.03, activo: 537.15, inventario: 74.57, pasivo: 439.17, patrimonio: 97.98 },
+        { year: 2021, ventas: 705.02, perdida: 22.70, activo: 593.78, inventario: 88.85, pasivo: 497.31, patrimonio: 96.47 },
+        { year: 2022, ventas: 776.16, perdida: 30.23, activo: 604.30, inventario: 95.26, pasivo: 515.98, patrimonio: 88.32 },
+        { year: 2023, ventas: 787.98, perdida: 20.09, activo: 636.60, inventario: 92.22, pasivo: 561.01, patrimonio: 75.59 },
+        { year: 2024, ventas: 754.41, perdida: 6.64, activo: 646.60, inventario: 76.22, pasivo: 543.91, patrimonio: 102.69 }
+    ]
+};
+
+
+function initTutiDashboard() {
+    console.log("Iniciando Dashboard Tuti..."); // Debug
+
+    // 1. DATA PREP
+    console.log("Preparando datos para gráficos..."); // Debug
+    const years = FINANCIAL_DATA.TUTI.map(d => d.year);
+    const calculateMargin = (companyData) => companyData.map(d => ((d.perdida / d.ventas) * 100));
+
+    // 2. KPIS SUPERIORES (AHORRO EFECTIVO)
+    console.log("Calculando KPI de ahorro en efectivo..."); // Debug
+    const kpiSavings = document.getElementById('cashSavingsKPI');
+    if (kpiSavings) {
+        // Cálculo: Suma de ventas históricas Tuti * 1.5% (comisión promedio evitada)
+        const totalVentas = FINANCIAL_DATA.TUTI.reduce((acc, curr) => acc + curr.ventas, 0);
+        const ahorro = totalVentas * 0.015; 
+        kpiSavings.innerHTML = `+$${ahorro.toFixed(1)}M`;
+        kpiSavings.style.color = '#8b5cf6'; // Asegurar color violeta
+    }
+
+    // --- GRÁFICO 1: COMPARATIVA VENTAS ---
+    console.log("Inicializando gráfico de comparación de ventas..."); // Debug
+    const ctxSales = document.getElementById('chartComparisonSales');
+    if (ctxSales) {
+        if (Chart.getChart(ctxSales)) Chart.getChart(ctxSales).destroy(); // Limpiar previo
+
+        new Chart(ctxSales, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: 'Tuti (Efectivo)', data: FINANCIAL_DATA.TUTI.map(d => d.ventas), borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.4, borderWidth: 3 },
+                    { label: 'Tía (DeUna)', data: FINANCIAL_DATA.TIA.map(d => d.ventas), borderColor: '#f59e0b', borderDash: [5, 5], tension: 0.4 },
+                    { label: 'Favorita (Digital)', data: FINANCIAL_DATA.FAVORITA.map(d => d.ventas), borderColor: '#ef4444', tension: 0.4 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false } }
+        });
+    }
+
+    // --- GRÁFICO 2: EFICIENCIA (ROTACIÓN DE ACTIVOS) ---
+    console.log("SDASD")
+    const ctxEff = document.getElementById('chartEfficiency');
+    if (ctxEff) {
+        if (Chart.getChart(ctxEff)) Chart.getChart(ctxEff).destroy();
+
+        // Cálculo: Ventas 2024 / Activos 2024
+        const efficiencyData = [
+            FINANCIAL_DATA.TUTI[5].ventas / FINANCIAL_DATA.TUTI[5].activo,
+            FINANCIAL_DATA.TIA[5].ventas / FINANCIAL_DATA.TIA[5].activo,
+            FINANCIAL_DATA.FAVORITA[5].ventas / FINANCIAL_DATA.FAVORITA[5].activo
+        ];
+
+        new Chart(ctxEff, {
+            type: 'bar',
+            data: {
+                labels: ['Tuti (Rápido)', 'Tía (Medio)', 'Favorita (Lento)'],
+                datasets: [{
+                    label: 'Rotación de Activos (x veces al año)',
+                    data: efficiencyData,
+                    backgroundColor: ['#8b5cf6', '#fbbf24', '#f87171'],
+                    borderRadius: 5,
+                    barThickness: 40
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                indexAxis: 'y', 
+                plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: true } } }
+            }
+        });
+    }
+
+    // --- GRÁFICO 3: TENDENCIA DE MÁRGENES ---
+    console.log("Calculando márgenes para gráfico de tendencias..."); // Debug
+    const ctxMargin = document.getElementById('chartMarginTrends');
+    if (ctxMargin) {
+        if (Chart.getChart(ctxMargin)) Chart.getChart(ctxMargin).destroy();
+
+        new Chart(ctxMargin, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: 'Margen Tía', data: calculateMargin(FINANCIAL_DATA.TIA), borderColor: '#f59e0b', backgroundColor: '#f59e0b', tension: 0.4 },
+                    { label: 'Margen Favorita', data: calculateMargin(FINANCIAL_DATA.FAVORITA), borderColor: '#ef4444', backgroundColor: '#ef4444', tension: 0.4 },
+                    { label: 'Margen Tuti', data: calculateMargin(FINANCIAL_DATA.TUTI), borderColor: '#8b5cf6', backgroundColor: '#8b5cf6', borderWidth: 3, borderDash: [2, 2], tension: 0.4 }
+                ]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.raw.toFixed(2)}%` } } },
+                scales: { y: { title: { display: true, text: 'Margen Neto (%)' } } }
+            }
+        });
+    }
+    console.log("Gráficos de ventas, eficiencia y márgenes inicializados.");
+    // --- GRÁFICO 4: MARKET SHARE (STACKED AREA) ---
+    const ctxShare = document.getElementById('chartMarketShare');
+    if (ctxShare) {
+        if (Chart.getChart(ctxShare)) Chart.getChart(ctxShare).destroy();
+
+        // Calcular totales del mercado (suma de los 3)
+        const marketTotals = years.map((_, i) => FINANCIAL_DATA.TUTI[i].ventas + FINANCIAL_DATA.TIA[i].ventas + FINANCIAL_DATA.FAVORITA[i].ventas);
+        const getShare = (data) => data.map((d, i) => (d.ventas / marketTotals[i]) * 100);
+
+        new Chart(ctxShare, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: 'Tuti (Hard Discount)',
+                        data: getShare(FINANCIAL_DATA.TUTI),
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.8)',
+                        fill: true,
+                        pointRadius: 0,
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Tía (Tradicional)',
+                        data: getShare(FINANCIAL_DATA.TIA),
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.6)',
+                        fill: true,
+                        pointRadius: 0,
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Favorita (Premium)',
+                        data: getShare(FINANCIAL_DATA.FAVORITA),
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.4)',
+                        fill: true,
+                        pointRadius: 0,
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.raw.toFixed(1)}%` }
+                    },
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: {
+                        stacked: true,
+                        title: { display: true, text: '% Cuota de Mercado' },
+                        max: 100
+                    },
+                    x: {
+                        title: { display: true, text: 'Año' }
+                    }
+                },
+                elements: {
+                    line: { tension: 0.4 }
+                }
+            }
+        });
+    }
+};
+
+// Inicialización Única
 document.addEventListener('DOMContentLoaded', () => {
     generateTimeline();
     setupModalHandlers();
     setupTabs();
-
-    // Initialize all charts
+    
+    // Gráficos originales
     initializeChart();
     initializeDigitalizationGauge();
     initializeBenchmarkChart();
@@ -1212,6 +1475,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeCountryComparisonChart();
     initializeDigitalizationRadarChart();
 
-    // Add smooth scroll behavior
-    document.documentElement.style.scrollBehavior = 'smooth';
+    // Nueva inicialización Tuti
+    initTutiDashboard();
 });

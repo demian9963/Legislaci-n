@@ -26,8 +26,117 @@
                 <span class="tab-icon">📊</span>
                 Dashboard
             </button>
+            <button class="tab-btn" data-tab="tuti">
+                <span class="tab-icon">🏪</span> Impacto Tuti
+            </button>
         </div>
 
+        <!-- Comparison Content -->
+        <div class="tab-content" id="tuti-tab">
+            <section class="dashboard-section" style="margin-top: 30px;">
+                
+                <style>
+                    .chart-explanation {
+                        font-size: 0.9rem;
+                        color: #4b5563;
+                        background-color: #f3f4f6;
+                        padding: 12px;
+                        border-radius: 8px;
+                        margin-top: 15px;
+                        line-height: 1.5;
+                        border-left: 4px solid #8b5cf6;
+                    }
+                    .chart-explanation strong {
+                        color: #111827;
+                    }
+                </style>
+
+                <div class="grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">David contra Goliat: Comparativa de Ventas</h4>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="chartComparisonSales"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            La línea violeta (Tuti) muestra un crecimiento explosivo, disparándose casi verticalmente desde 2019. Mientras Tía y Favorita crecen lentamente, Tuti está ganando terreno a una velocidad récord, acercándose rápidamente a los niveles de facturación de gigantes establecidos.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">La Velocidad del Dinero (Eficiencia)</h4>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="chartEfficiency"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            Este gráfico mide qué tan rápido una tienda vende y repone sus productos. <strong>Tuti es una "máquina de velocidad"</strong>: vende todo su inventario 2.6 veces más rápido que Favorita. Al cobrar solo en efectivo, recuperan el dinero al instante para volver a comprar mercadería sin esperar al banco.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chart-section-modern" style="margin-bottom: 20px;">
+                    <h4 class="chart-title">El Camino a la Rentabilidad</h4>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="chartMarginTrends"></canvas>
+                    </div>
+                    <p class="chart-explanation">
+                        Al principio, la línea violeta estaba muy abajo, lo que significa que Tuti perdía dinero intencionalmente para abrir muchas tiendas rápido. Lo impresionante es cómo la línea ha subido hasta llegar a cero y volverse positiva en 2024. <strong>Ya dejaron de "quemar dinero" y ahora su modelo es rentable.</strong>
+                    </p>
+                </div>
+
+                <div class="grid2" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                    
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">¿Quién se come el pastel? (Cuota de Mercado)</h4>
+                        <div class="chart-container" style="height: 350px;">
+                            <canvas id="chartMarketShare"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            Imagina que todo el dinero que las familias gastan en supermercado es un cuadrado. La zona violeta muestra cómo Tuti se está "comiendo" el espacio de los otros supermercados año tras año. Lo que Tuti gana, los tradicionales lo están perdiendo.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern" style="background: #fdf4ff; border: 1px solid #e879f9;">
+                        <h4 class="chart-title" style="color: #86198f;">El Tesoro del "Solo Efectivo"</h4>
+                        <div style="display: flex; flex-direction: column; justify-content: center; height: 60%;">
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">Ahorro acumulado en comisiones bancarias no pagadas (2019-2024):</p>
+                            <div id="cashSavingsKPI" style="font-size: 2.5rem; font-weight: 800; color: #8b5cf6;">
+                                </div>
+                        </div>
+                        <p class="chart-explanation" style="background: white; border-left: 4px solid #d946ef;">
+                            Cada vez que pagas con tarjeta o apps, el banco cobra una comisión al comercio. Al decir "NO" a las tarjetas, Tuti se ha ahorrado esta fortuna. Ese dinero, en lugar de ir al banco, se usa para bajar aún más los precios.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="dashboard-conclusion" style="margin-top: 40px; background: #fff; border-left: 6px solid #111827; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827; margin-bottom: 20px;">Veredicto Final: La Paradoja de la Digitalización</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div>
+                        <h4 style="font-weight: bold; color: #ef4444; margin-bottom: 10px;">1. La Trampa Digital</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            Para supermercados como <strong>Tía</strong>, aceptar pagos digitales mejora la experiencia, pero "muerde" sus ganancias. Tienen costos tecnológicos que Tuti simplemente ignora.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-weight: bold; color: #8b5cf6; margin-bottom: 10px;">2. Efectivo es Rey</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            <strong>Tuti</strong> demostró que en Ecuador, la velocidad mata a la comodidad. Su modelo de "Solo Efectivo" les da liquidez inmediata para expandirse sin pedir prestado al banco.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-weight: bold; color: #111827; margin-bottom: 10px;">3. Mercado Dividido</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            El país se divide en dos: los que pagan por comodidad y experiencia (Favorita/Apps) y los que sacrifican la forma de pago por el precio más bajo posible (Tuti).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Timeline Tab Content -->
         <div class="tab-content active" id="timeline-tab">
             <p class="instruction">Haz clic en los puntos de la línea de tiempo para ver los eventos</p>
