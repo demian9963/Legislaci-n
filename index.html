@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea de Tiempo: Digitalización y Banca en Ecuador</title>
+    <link rel="stylesheet" href="timeline.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>Digitalización y Banca en Ecuador</h1>
+            <p class="subtitle">Un viaje de transformación digital (1992 - 2026)</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" data-tab="timeline">
+                <span class="tab-icon">📅</span>
+                Línea de Tiempo
+            </button>
+            <button class="tab-btn" data-tab="dashboard">
+                <span class="tab-icon">📊</span>
+                Dashboard
+            </button>
+            <button class="tab-btn" data-tab="tuti">
+                <span class="tab-icon">🏪</span> Impacto Tuti
+            </button>
+            <button class="tab-btn" data-tab="propuesta">
+                <span class="tab-icon">⚖️</span> Propuesta de Ley
+            </button>
+        </div>
+
+        <!-- Comparison Content -->
+        <div class="tab-content" id="tuti-tab">
+            <section class="dashboard-section" style="margin-top: 30px;">
+
+                <style>
+                    .chart-explanation {
+                        font-size: 0.9rem;
+                        color: #4b5563;
+                        background-color: #f3f4f6;
+                        padding: 12px;
+                        border-radius: 8px;
+                        margin-top: 15px;
+                        line-height: 1.5;
+                        border-left: 4px solid #8b5cf6;
+                    }
+
+                    .chart-explanation strong {
+                        color: #111827;
+                    }
+                </style>
+
+                <div class="grid2"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">David contra Goliat: Comparativa de Ventas</h4>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="chartComparisonSales"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            La línea violeta (Tuti) muestra un crecimiento explosivo, disparándose casi verticalmente
+                            desde 2019. Mientras Tía y Favorita crecen lentamente, Tuti está ganando terreno a una
+                            velocidad récord, acercándose rápidamente a los niveles de facturación de gigantes
+                            establecidos.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">La Velocidad del Dinero (Eficiencia)</h4>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="chartEfficiency"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            Este gráfico mide qué tan rápido una tienda vende y repone sus productos. <strong>Tuti es
+                                una "máquina de velocidad"</strong>: vende todo su inventario 2.6 veces más rápido que
+                            Favorita. Al cobrar solo en efectivo, recuperan el dinero al instante para volver a comprar
+                            mercadería sin esperar al banco.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chart-section-modern" style="margin-bottom: 20px;">
+                    <h4 class="chart-title">El Camino a la Rentabilidad</h4>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="chartMarginTrends"></canvas>
+                    </div>
+                    <p class="chart-explanation">
+                        Al principio, la línea violeta estaba muy abajo, lo que significa que Tuti perdía dinero
+                        intencionalmente para abrir muchas tiendas rápido. Lo impresionante es cómo la línea ha subido
+                        hasta llegar a cero y volverse positiva en 2024. <strong>Ya dejaron de "quemar dinero" y ahora
+                            su modelo es rentable.</strong>
+                    </p>
+                </div>
+
+                <div class="grid2" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">¿Quién se come el pastel? (Cuota de Mercado)</h4>
+                        <div class="chart-container" style="height: 350px;">
+                            <canvas id="chartMarketShare"></canvas>
+                        </div>
+                        <p class="chart-explanation">
+                            Imagina que todo el dinero que las familias gastan en supermercado es un cuadrado. La zona
+                            violeta muestra cómo Tuti se está "comiendo" el espacio de los otros supermercados año tras
+                            año. Lo que Tuti gana, los tradicionales lo están perdiendo.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern" style="background: #fdf4ff; border: 1px solid #e879f9;">
+                        <h4 class="chart-title" style="color: #86198f;">El Tesoro del "Solo Efectivo"</h4>
+                        <div style="display: flex; flex-direction: column; justify-content: center; height: 60%;">
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">Ahorro acumulado en
+                                comisiones bancarias no pagadas (2019-2024):</p>
+                            <div id="cashSavingsKPI" style="font-size: 2.5rem; font-weight: 800; color: #8b5cf6;">
+                            </div>
+                        </div>
+                        <p class="chart-explanation" style="background: white; border-left: 4px solid #d946ef;">
+                            Cada vez que pagas con tarjeta o apps, el banco cobra una comisión al comercio. Al decir
+                            "NO" a las tarjetas, Tuti se ha ahorrado esta fortuna. Ese dinero, en lugar de ir al banco,
+                            se usa para bajar aún más los precios.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="dashboard-conclusion"
+                style="margin-top: 40px; background: #fff; border-left: 6px solid #111827; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827; margin-bottom: 20px;">Veredicto Final:
+                    La Paradoja de la Digitalización</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div>
+                        <h4 style="font-weight: bold; color: #ef4444; margin-bottom: 10px;">1. La Trampa Digital</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            Para supermercados como <strong>Tía</strong>, aceptar pagos digitales mejora la experiencia,
+                            pero "muerde" sus ganancias. Tienen costos tecnológicos que Tuti simplemente ignora.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-weight: bold; color: #8b5cf6; margin-bottom: 10px;">2. Efectivo es Rey</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            <strong>Tuti</strong> demostró que en Ecuador, la velocidad mata a la comodidad. Su modelo
+                            de "Solo Efectivo" les da liquidez inmediata para expandirse sin pedir prestado al banco.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 style="font-weight: bold; color: #111827; margin-bottom: 10px;">3. Mercado Dividido</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: #4b5563;">
+                            El país se divide en dos: los que pagan por comodidad y experiencia (Favorita/Apps) y los
+                            que sacrifican la forma de pago por el precio más bajo posible (Tuti).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Law Proposal Tab Content -->
+        <div class="tab-content" id="propuesta-tab">
+            <div class="law-proposal-container">
+                <div class="law-header">
+                    <h2 class="law-title">Propuesta de Ley de Interoperabilidad Financiera y Transformación Digital</h2>
+                    <p class="law-subtitle">Marco normativo para la modernización del sistema financiero y digital del
+                        Ecuador</p>
+                </div>
+
+                <!-- Capítulo I -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">CAPÍTULO I</h3>
+                    <h4 class="chapter-subtitle">REFORMAS AL CÓDIGO ORGÁNICO MONETARIO Y FINANCIERO</h4>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 1.- Incorporación del principio de Interoperabilidad
+                            Financiera</h5>
+                        <p class="article-content">
+                            Se propone incorporar como principio rector del Sistema Financiero Nacional el de
+                            <strong>Interoperabilidad Total</strong>,
+                            entendido como la obligación de las entidades que conforman el sistema financiero, tanto
+                            públicas como privadas, de garantizar
+                            la conectividad, integración tecnológica y portabilidad de los datos financieros. Esta
+                            interoperabilidad deberá implementarse
+                            mediante el uso de estándares abiertos, seguros y debidamente estandarizados, que permitan
+                            el intercambio eficiente de información,
+                            aseguren la protección de los datos y faciliten la integración entre los distintos actores
+                            del sistema financiero.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 2.- Obligatoriedad de APIs Abiertas</h5>
+                        <p class="article-content">
+                            Todas las entidades del sistema financiero nacional, incluyendo bancos privados, bancos
+                            públicos, cooperativas de ahorro
+                            y crédito y mutualistas, deberán:
+                        </p>
+                        <ol class="article-list">
+                            <li>Implementar interfaces de programación de aplicaciones (APIs) abiertas, estandarizadas y
+                                seguras.</li>
+                            <li>Permitir, previa autorización expresa del usuario, el acceso a información financiera y
+                                la iniciación de pagos por parte de terceros autorizados.</li>
+                            <li>Cumplir con estándares técnicos definidos por el Banco Central del Ecuador en
+                                coordinación con la Superintendencia competente.</li>
+                            <li>La negativa injustificada será considerada infracción grave.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 3.- Portabilidad Financiera</h5>
+                        <p class="article-content">Los usuarios del sistema financiero tendrán derecho a:</p>
+                        <ol class="article-list">
+                            <li>Transferir su información financiera a otra entidad de forma inmediata y sin costo.</li>
+                            <li>Cancelar productos financieros sin penalización cuando migren a otra institución.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 4.- Sistema de Pagos Interbancarios 24/7</h5>
+                        <p class="article-content">El Sistema de Pagos Interbancarios operado por el Banco Central del
+                            Ecuador:</p>
+                        <ol class="article-list">
+                            <li>Funcionará de manera obligatoria las 24 horas del día, los 7 días de la semana.</li>
+                            <li>Tendrá liquidación en tiempo real.</li>
+                            <li>Será gratuito para micropagos definidos reglamentariamente.</li>
+                            <li>La gratuidad para micropagos no podrá ser suspendida por regulación secundaria.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 5.- Integración del Sector Público al SPI</h5>
+                        <p class="article-content">
+                            Todas las entidades del sector público deberán integrar sus sistemas de recaudación y pagos
+                            al Sistema de Pagos
+                            Interbancarios 24/7 en un plazo máximo de 24 meses.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Capítulo II -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">CAPÍTULO II</h3>
+                    <h4 class="chapter-subtitle">REFORMAS A LA LEY FINTECH</h4>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 6.- Licencia de Proveedores de Servicios de Información y
+                            Pagos</h5>
+                        <p class="article-content">Créase la categoría de:</p>
+                        <ol class="article-list">
+                            <li>Proveedor de Servicios de Información Financiera.</li>
+                            <li>Proveedor de Servicios de Iniciación de Pagos.</li>
+                        </ol>
+                        <p class="article-content">
+                            Estas entidades podrán operar mediante APIs abiertas bajo supervisión de la autoridad
+                            competente.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 7.- Estándares Técnicos Obligatorios</h5>
+                        <p class="article-content">
+                            Las especificaciones técnicas de interoperabilidad, ciberseguridad y autenticación reforzada
+                            serán definidas por el
+                            Banco Central del Ecuador en coordinación con la Agencia Nacional de Transformación Digital.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Capítulo III -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">CAPÍTULO III</h3>
+                    <h4 class="chapter-subtitle">CREACIÓN DE LA AGENCIA NACIONAL DE TRANSFORMACIÓN DIGITAL</h4>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 8.- Creación</h5>
+                        <p class="article-content">
+                            Créase la <strong>Agencia Nacional de Transformación Digital (ANTD)</strong> como una
+                            entidad de derecho público,
+                            adscrita a la Función Ejecutiva, dotada de autonomía técnica, administrativa y
+                            presupuestaria para el cumplimiento de sus fines.
+                            La ANTD ejercerá sus competencias con independencia en la gestión de sus recursos y en la
+                            adopción de decisiones técnicas,
+                            conforme al marco jurídico vigente y a los principios de eficiencia, transparencia y
+                            responsabilidad en la administración pública.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 9.- Competencias</h5>
+                        <p class="article-content">La Agencia tendrá las siguientes competencias:</p>
+                        <ol class="article-list">
+                            <li>Definir la arquitectura tecnológica estatal obligatoria.</li>
+                            <li>Homologar estándares de interoperabilidad.</li>
+                            <li>Certificar sistemas informáticos públicos.</li>
+                            <li>Establecer lineamientos de identidad digital nacional.</li>
+                            <li>Exigir la adopción de APIs públicas estandarizadas.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 10.- Poder Vinculante</h5>
+                        <p class="article-content">
+                            Ninguna entidad pública podrá adquirir, desarrollar, modificar o contratar sistemas
+                            tecnológicos sin contar previamente
+                            con la certificación de interoperabilidad emitida por la Agencia competente. Los contratos
+                            celebrados en contravención de
+                            esta disposición serán nulos de pleno derecho, sin perjuicio de las responsabilidades
+                            administrativas, civiles o penales
+                            a que hubiere lugar.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 11.- Integración Financiera-Digital</h5>
+                        <p class="article-content">La Agencia coordinará con el Banco Central del Ecuador para:</p>
+                        <ol class="article-list">
+                            <li>Garantizar interoperabilidad entre sistemas financieros y plataformas estatales.</li>
+                            <li>Implementar identidad digital para procesos KYC.</li>
+                            <li>Unificar pasarelas de pago del Estado.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Capítulo IV -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">CAPÍTULO IV</h3>
+                    <h4 class="chapter-subtitle">INFRACCIONES</h4>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 12.- Clasificación</h5>
+                        <p class="article-content">Las infracciones al cumplimiento de la presente Ley se clasifican en:
+                        </p>
+                        <ol class="article-list">
+                            <li>Leves</li>
+                            <li>Graves</li>
+                            <li>Muy graves</li>
+                        </ol>
+                        <p class="article-content">
+                            La determinación y calificación corresponderá a la autoridad de control competente, según el
+                            ámbito de supervisión.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 13.- Infracciones leves</h5>
+                        <p class="article-content">Constituyen infracciones leves:</p>
+                        <ol class="article-list">
+                            <li>El retraso injustificado en la actualización de APIs conforme a estándares técnicos
+                                vigentes.</li>
+                            <li>La omisión o envío extemporáneo de reportes exigidos por el Banco Central del Ecuador o
+                                la Agencia Nacional de Transformación Digital.</li>
+                            <li>Incumplimientos formales en documentación técnica de interoperabilidad.</li>
+                            <li>Fallas técnicas no sistemáticas que no afecten la continuidad del servicio.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 14.- Infracciones graves</h5>
+                        <p class="article-content">Constituyen infracciones graves:</p>
+                        <ol class="article-list">
+                            <li>La negativa injustificada para implementar o habilitar APIs abiertas conforme a la
+                                presente Ley.</li>
+                            <li>Obstaculizar la portabilidad financiera del usuario.</li>
+                            <li>Incumplir la integración obligatoria al Sistema de Pagos Interbancarios 24/7 dentro de
+                                los plazos establecidos.</li>
+                            <li>Cobrar comisiones prohibidas en micropagos.</li>
+                            <li>Incumplir estándares obligatorios de ciberseguridad, autenticación reforzada o
+                                protección de datos.</li>
+                            <li>Incumplir directrices técnicas vinculantes emitidas por la autoridad competente.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 15.- Infracciones muy graves</h5>
+                        <p class="article-content">Constituyen infracciones muy graves:</p>
+                        <ol class="article-list">
+                            <li>Restringir, bloquear o manipular deliberadamente el acceso autorizado a información
+                                financiera.</li>
+                            <li>Utilizar o comercializar datos financieros sin autorización expresa del usuario.</li>
+                            <li>Reincidir en infracciones graves dentro de un período de veinticuatro meses.</li>
+                            <li>Alterar o comprometer la operatividad del Sistema de Pagos Interbancarios 24/7.</li>
+                            <li>Contratar o desarrollar sistemas tecnológicos públicos sin certificación previa de
+                                interoperabilidad.</li>
+                            <li>Incumplir órdenes de obligatorio cumplimiento emitidas por la ANTD o el Banco Central
+                                del Ecuador.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Capítulo V -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">CAPÍTULO V</h3>
+                    <h4 class="chapter-subtitle">SANCIONES</h4>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 16.- Régimen general de sanciones</h5>
+                        <p class="article-content">
+                            Las infracciones previstas en los artículos 13, 14 y 15 serán sancionadas conforme a su
+                            gravedad, aplicando criterios
+                            de proporcionalidad, reincidencia y capacidad económica del infractor.
+                        </p>
+                        <p class="article-content">Las sanciones económicas se determinarán:</p>
+                        <ol class="article-list">
+                            <li>Para entidades financieras privadas: sobre su patrimonio técnico registrado al cierre
+                                del último ejercicio fiscal.</li>
+                            <li>Para entidades públicas: sobre su presupuesto institucional codificado anual.</li>
+                        </ol>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 17.- Sanciones por infracciones leves</h5>
+                        <p class="article-content">Las infracciones leves previstas en el artículo 13 serán sancionadas
+                            de la siguiente manera:</p>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades privadas:</h6>
+                            <ol class="article-list">
+                                <li>Multa equivalente entre el 0.05% y el 0.20% del patrimonio técnico.</li>
+                                <li>Amonestación escrita.</li>
+                                <li>Imposición de un plan obligatorio de remediación, con un plazo máximo de 60 días
+                                    para su cumplimiento.</li>
+                            </ol>
+                        </div>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades públicas:</h6>
+                            <ol class="article-list">
+                                <li>Multa institucional equivalente entre el 0.05% y el 0.20% del presupuesto anual
+                                    institucional.</li>
+                                <li>Determinación de responsabilidad administrativa del servidor público responsable,
+                                    conforme a la normativa vigente.</li>
+                                <li>Imposición de un plan obligatorio de adecuación tecnológica, dentro del plazo que
+                                    determine la autoridad competente.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 18.- Sanciones por infracciones graves</h5>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades privadas:</h6>
+                            <ol class="article-list">
+                                <li>Multa equivalente entre el 0.20% y el 1% del patrimonio técnico.</li>
+                                <li>Suspensión temporal de la autorización para operar interfaces de programación de
+                                    aplicaciones (APIs), hasta por 180 días.</li>
+                                <li>Intervención técnica supervisada por la autoridad competente, durante el tiempo que
+                                    sea necesario para subsanar la infracción.</li>
+                            </ol>
+                        </div>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades públicas:</h6>
+                            <ol class="article-list">
+                                <li>Multa institucional equivalente entre el 0.20% y el 1% del presupuesto anual
+                                    institucional.</li>
+                                <li>Suspensión temporal de los servidores públicos responsables del área tecnológica,
+                                    conforme a la normativa vigente.</li>
+                                <li>Obligación de reestructuración tecnológica bajo la supervisión de la Agencia
+                                    Nacional de Transformación Digital (ANTD).</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 19.- Sanciones por infracciones muy graves</h5>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades privadas:</h6>
+                            <ol class="article-list">
+                                <li>Multa entre el 1% y el 5% del patrimonio técnico.</li>
+                                <li>Suspensión de operaciones relacionadas con interoperabilidad hasta por dos años.
+                                </li>
+                                <li>Revocatoria definitiva de licencia en caso de reincidencia.</li>
+                                <li>Inhabilitación de administradores hasta por cinco años.</li>
+                            </ol>
+                        </div>
+
+                        <div class="sanction-block">
+                            <h6 class="sanction-subtitle">Para entidades públicas:</h6>
+                            <ol class="article-list">
+                                <li>Multa institucional entre el 1% y el 3% del presupuesto anual institucional.</li>
+                                <li>Destitución del funcionario responsable conforme al régimen disciplinario aplicable.
+                                </li>
+                                <li>Intervención administrativa del sistema tecnológico afectado.</li>
+                                <li>Responsabilidad civil por daños ocasionados al Estado.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Artículo 20.- Criterios de graduación</h5>
+                        <p class="article-content">Para la determinación del porcentaje aplicable dentro del rango
+                            establecido se considerará:</p>
+                        <ol class="article-list">
+                            <li>La magnitud del daño al usuario o al sistema financiero.</li>
+                            <li>El beneficio económico obtenido.</li>
+                            <li>La reincidencia.</li>
+                            <li>El impacto sistémico en la estabilidad financiera o digital.</li>
+                            <li>La cooperación con la autoridad.</li>
+                            <li>La adopción voluntaria de medidas correctivas.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Disposiciones Transitorias -->
+                <section class="law-chapter">
+                    <h3 class="chapter-title">DISPOSICIONES TRANSITORIAS</h3>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Primera.-</h5>
+                        <p class="article-content">
+                            Las entidades financieras tendrán un plazo máximo de 18 meses para implementar APIs
+                            abiertas.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Segunda.-</h5>
+                        <p class="article-content">
+                            Las entidades públicas tendrán 24 meses para adecuar sus sistemas a los estándares de la
+                            Agencia.
+                        </p>
+                    </div>
+
+                    <div class="law-article">
+                        <h5 class="article-title">Tercera.-</h5>
+                        <p class="article-content">
+                            El Ejecutivo expedirá el reglamento general en un plazo máximo de 180 días.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Conclusion Section -->
+                <div class="law-conclusion">
+                    <h3 class="conclusion-title">Justificación de la Propuesta</h3>
+                    <p class="conclusion-text">
+                        Esta propuesta de ley busca modernizar el marco regulatorio del sistema financiero ecuatoriano,
+                        promoviendo la
+                        <strong>interoperabilidad</strong>, la <strong>competencia</strong> y la <strong>innovación
+                            tecnológica</strong>.
+                        Al establecer estándares claros y obligatorios para la implementación de APIs abiertas y la
+                        creación de una Agencia
+                        Nacional de Transformación Digital, se garantiza que Ecuador pueda competir en igualdad de
+                        condiciones con economías
+                        digitales avanzadas, protegiendo siempre los derechos de los usuarios y la seguridad del sistema
+                        financiero.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Tab Content -->
+        <div class="tab-content active" id="timeline-tab">
+            <p class="instruction">Haz clic en los puntos de la línea de tiempo para ver los eventos</p>
+
+            <div class="timeline-container">
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-points" id="timelinePoints">
+                        <!-- Timeline points will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for event details -->
+            <div class="modal" id="eventModal">
+                <div class="modal-content">
+                    <button class="modal-close" id="modalClose">&times;</button>
+                    <div class="modal-header">
+                        <h2 id="modalTitle"></h2>
+                        <span class="modal-date" id="modalDate"></span>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <!-- Event details will be inserted here -->
+                    </div>
+                    <button class="modal-btn" id="modalCloseBtn">Cerrar</button>
+                </div>
+            </div>
+
+            <div class="analysis-section">
+                <h2>Efecto de la Facturación Electrónica</h2>
+                <div class="analysis-cards">
+                    <div class="analysis-card">
+                        <div class="card-icon">👁️</div>
+                        <h3>El "Big Brother" Tributario</h3>
+                        <p>Control en tiempo real que eliminó prácticas como el "doble facturero". El SRI valida cada
+                            transacción instantáneamente, aumentando el cumplimiento voluntario.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-icon">💰</div>
+                        <h3>Eficiencia vs. Costo Oculto</h3>
+                        <p>Reducción del 50% en costos operativos para empresas, pero generó barreras de entrada inicial
+                            para microempresas rurales.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <div class="card-icon">🔐</div>
+                        <h3>Explosión de la Identidad Digital</h3>
+                        <p>La obligatoriedad fiscal impulsó que ~2.5 millones de comerciantes activos tengan firma
+                            digital
+                            válida hoy en día.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab Content -->
+        <div class="tab-content" id="dashboard-tab">
+            <div class="dashboard-container">
+                <h2 class="dashboard-title">Comercio Electrónico en Ecuador 2024-2025</h2>
+                <p class="dashboard-subtitle">Análisis profundo del mercado digital ecuatoriano: volumen, demografía y
+                    tendencias</p>
+
+                <!-- Section 1: Panorama Económico -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">💰 Panorama Económico</h3>
+                        <p class="section-description">
+                            El comercio electrónico en Ecuador ha experimentado un crecimiento explosivo, consolidándose
+                            como un pilar fundamental de la economía digital. Con más de USD 6,400 millones en
+                            transacciones durante 2024, el e-commerce representa una oportunidad sin precedentes para
+                            empresas y consumidores.
+                        </p>
+                    </div>
+
+                    <div class="kpi-grid">
+                        <div class="kpi-card kpi-primary">
+                            <div class="kpi-icon">💵</div>
+                            <div class="kpi-value">$6,400M</div>
+                            <div class="kpi-label">Volumen E-commerce 2024</div>
+                            <div class="kpi-change positive">+22% vs 2023</div>
+                            <div class="kpi-note">Dólares Americanos (USD)</div>
+                        </div>
+                        <div class="kpi-card kpi-secondary">
+                            <div class="kpi-icon">📈</div>
+                            <div class="kpi-value">22%</div>
+                            <div class="kpi-label">Crecimiento Anual</div>
+                            <div class="kpi-change positive">CAGR proyectado: 20%</div>
+                            <div class="kpi-note">Hasta 2027</div>
+                        </div>
+                        <div class="kpi-card kpi-accent">
+                            <div class="kpi-icon">🛒</div>
+                            <div class="kpi-value">81.1M</div>
+                            <div class="kpi-label">Transacciones E-commerce</div>
+                            <div class="kpi-change positive">+6.1M nuevas</div>
+                            <div class="kpi-note">Transacciones anuales</div>
+                        </div>
+                        <div class="kpi-card kpi-highlight">
+                            <div class="kpi-icon">👥</div>
+                            <div class="kpi-value">50%</div>
+                            <div class="kpi-label">Adultos Compran Online</div>
+                            <div class="kpi-change">15.29M usuarios</div>
+                            <div class="kpi-note">Penetración de internet: 83.6%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 1.5: Evolución Digital vs Físico -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">📈 Evolución del Pago Digital</h3>
+                        <p class="section-description">
+                            La transformación digital del sistema financiero ecuatoriano ha sido dramática. En julio de
+                            2021, por primera vez en la historia, las transacciones digitales superaron a las físicas.
+                            Este gráfico muestra la evolución desde 2002 hasta las proyecciones para 2026, evidenciando
+                            el cambio de paradigma en los hábitos de pago de los ecuatorianos.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern">
+                        <div class="chart-wrapper">
+                            <h4 class="chart-title">Transacciones Digitales vs Físicas (2002-2026)</h4>
+                            <div class="chart-container">
+                                <canvas id="digitalGrowthChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                *Julio 2021 marcó el punto de inflexión histórico: las transacciones digitales (285M)
+                                superaron por primera vez a las físicas (258M). El monto total transaccionado alcanzó
+                                USD 135,849 millones, superando 1.2 veces el PIB de Ecuador.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Evolución del Mercado -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">📊 Evolución del Mercado</h3>
+                        <p class="section-description">
+                            El mercado ecuatoriano muestra una división equilibrada entre ventas nacionales e
+                            internacionales. Las plataformas locales ganan terreno gracias a mejoras en logística y
+                            garantías, mientras que las internacionales mantienen su atractivo por variedad y precios
+                            competitivos.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern">
+                        <div class="chart-wrapper">
+                            <h4 class="chart-title">Ventas Nacionales vs Internacionales (2024-2025)</h4>
+                            <div class="chart-container">
+                                <canvas id="ecommerceEvolutionChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                *Proyección 2025 basada en CAGR actual. Las ventas nacionales representan el 55% del
+                                total, impulsadas por preferencias de entrega rápida y garantías locales.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Perfil del Consumidor -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">👥 Perfil del Consumidor Digital</h3>
+                        <p class="section-description">
+                            ¿Quiénes están comprando? Los Millennials lideran en volumen de gasto, mientras que la Gen Z
+                            domina en frecuencia de compra. La brecha generacional se cierra rápidamente con la adopción
+                            masiva de billeteras digitales y pagos móviles.
+                        </p>
+                    </div>
+
+                    <div class="demographics-grid">
+                        <div class="chart-section-modern">
+                            <h4 class="chart-title">Distribución Demográfica por Edad</h4>
+                            <div class="chart-container">
+                                <canvas id="demographicsChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                Los Millennials (25-34 años) representan el 16.7% de la población y el mayor volumen de
+                                gasto digital.
+                            </p>
+                        </div>
+
+                        <div class="insight-cards">
+                            <div class="insight-card insight-genz">
+                                <h4 class="insight-title">🎮 Generación Z (18-24)</h4>
+                                <p class="insight-text">
+                                    Impulsan la frecuencia de compra con más del 60% realizando compras semanales.
+                                    Prefieren delivery, gaming y servicios digitales. Dominan el uso de redes sociales
+                                    para compras (Instagram 72%, WhatsApp 74%).
+                                </p>
+                                <div class="insight-stat">12% de la población</div>
+                            </div>
+                            <div class="insight-card insight-millennial">
+                                <h4 class="insight-title">💼 Millennials (25-34)</h4>
+                                <p class="insight-text">
+                                    El "Core Consumer" del e-commerce ecuatoriano. Mayor poder adquisitivo y
+                                    estabilidad. Compran tecnología, moda, electrodomésticos y viajes. Son los usuarios
+                                    más activos del ecosistema digital.
+                                </p>
+                                <div class="insight-stat">16.7% de la población</div>
+                            </div>
+                            <div class="insight-card insight-genx">
+                                <h4 class="insight-title">🏠 Gen X y Boomers (35+)</h4>
+                                <p class="insight-text">
+                                    Crecimiento acelerado post-pandemia. Ticket promedio más alto, enfocándose en salud,
+                                    hogar y supermercado. El 52% de compradores online pertenecen a estratos
+                                    socioeconómicos bajo y medio-bajo.
+                                </p>
+                                <div class="insight-stat">40.8% de la población</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Preferencias de Compra -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🛍️ Preferencias de Compra</h3>
+                        <p class="section-description">
+                            Los servicios digitales lideran las categorías de consumo, seguidos por bienes personales y
+                            alimentos. Los métodos de pago tradicionales (tarjetas) aún dominan, pero las billeteras
+                            digitales crecen rápidamente.
+                        </p>
+                    </div>
+
+                    <div class="preferences-grid">
+                        <div class="chart-section-modern">
+                            <h4 class="chart-title">Categorías Más Demandadas</h4>
+                            <div class="chart-container">
+                                <canvas id="consumptionCategoriesChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                Servicios digitales (streaming, transporte, software) lideran con 87% de penetración.
+                            </p>
+                        </div>
+
+                        <div class="chart-section-modern">
+                            <h4 class="chart-title">Métodos de Pago Preferidos</h4>
+                            <div class="chart-container">
+                                <canvas id="paymentMethodsChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                Las tarjetas de crédito dominan con 74%, pero billeteras digitales (6%) crecen
+                                aceleradamente.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4.5: Comparación Internacional -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🌍 Comparación Internacional</h3>
+                        <p class="section-description">
+                            Ecuador se posiciona en un nivel intermedio de digitalización a nivel regional y global, con
+                            un
+                            modelo híbrido que combina fuerte digitalización fiscal con desafíos en infraestructura
+                            rural.
+                            Comparado con líderes como China y referentes regionales como Chile, Ecuador muestra un
+                            crecimiento sostenido y oportunidades de mejora.
+                        </p>
+                    </div>
+
+                    <div class="chart-section-modern">
+                        <h4 class="chart-title">Nivel de Digitalización por País</h4>
+                        <div class="chart-container">
+                            <canvas id="countryComparisonChart"></canvas>
+                        </div>
+                        <p class="chart-note">
+                            Ecuador alcanza un 78% de digitalización, superando el promedio latinoamericano y
+                            acercándose a
+                            estándares OCDE.
+                        </p>
+                    </div>
+
+                    <div class="comparison-cards">
+                        <div class="comparison-card comparison-china">
+                            <div class="comparison-flag">🇨🇳</div>
+                            <h4 class="comparison-country">China</h4>
+                            <div class="comparison-percentage">95%</div>
+                            <p class="comparison-description">
+                                Estado desarrollista digital con pagos universales (Alipay/WeChat) y digitalización
+                                obligatoria. Modelo de referencia global en transformación digital.
+                            </p>
+                        </div>
+                        <div class="comparison-card comparison-chile">
+                            <div class="comparison-flag">🇨🇱</div>
+                            <h4 class="comparison-country">Chile</h4>
+                            <div class="comparison-percentage">88%</div>
+                            <p class="comparison-description">
+                                Estándar OCDE con Agencia Nacional de Ciberseguridad e identidad digital universal
+                                (ClaveÚnica). Referente regional en gobierno digital.
+                            </p>
+                        </div>
+                        <div class="comparison-card comparison-canada">
+                            <div class="comparison-flag">🇨🇦</div>
+                            <h4 class="comparison-country">Canadá</h4>
+                            <div class="comparison-percentage">85%</div>
+                            <p class="comparison-description">
+                                Ecosistema consolidado con alta penetración de internet (96.1% hogares) y servicios
+                                financieros digitales. Modelo de referencia en inclusión digital.
+                            </p>
+                        </div>
+                        <div class="comparison-card comparison-ecuador">
+                            <div class="comparison-flag">🇪🇨</div>
+                            <h4 class="comparison-country">Ecuador</h4>
+                            <div class="comparison-percentage">78%</div>
+                            <p class="comparison-description">
+                                Modelo híbrido con fuerte digitalización fiscal (99% facturación electrónica) y
+                                crecimiento sostenido. Cimientos legales sólidos con oportunidades de expansión.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4.6: Índice de Digitalización de Ecuador -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">📊 Índice de Digitalización de Ecuador</h3>
+                        <p class="section-description">
+                            Un análisis detallado de los indicadores clave que conforman el nivel de digitalización del
+                            país. Ecuador muestra fortalezas notables en facturación electrónica (99%) y firmas
+                            digitales
+                            (2M+ certificados), mientras que áreas como conectividad rural y comercio electrónico
+                            presentan
+                            oportunidades de mejora continua.
+                        </p>
+                    </div>
+
+                    <div class="digitalization-grid">
+                        <div class="chart-section-modern">
+                            <h4 class="chart-title">Indicadores de Digitalización</h4>
+                            <div class="chart-container">
+                                <canvas id="digitalizationRadarChart"></canvas>
+                            </div>
+                            <p class="chart-note">
+                                El radar muestra el desempeño de Ecuador en cinco dimensiones clave de la transformación
+                                digital.
+                            </p>
+                        </div>
+
+                        <div class="digitalization-metrics">
+                            <div class="metric-card metric-internet">
+                                <div class="metric-header">
+                                    <span class="metric-label">Usuarios de Internet</span>
+                                    <span class="metric-value">78%</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-progress" style="width: 78%"></div>
+                                </div>
+                                <p class="metric-detail">13.3 - 13.5 millones de personas conectadas</p>
+                            </div>
+
+                            <div class="metric-card metric-4g">
+                                <div class="metric-header">
+                                    <span class="metric-label">Cobertura 4G/LTE</span>
+                                    <span class="metric-value">80.6%</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-progress" style="width: 80.6%"></div>
+                                </div>
+                                <p class="metric-detail">De la población total con acceso a red 4G</p>
+                            </div>
+
+                            <div class="metric-card metric-billing">
+                                <div class="metric-header">
+                                    <span class="metric-label">Facturación Electrónica</span>
+                                    <span class="metric-value">99%</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-progress" style="width: 99%"></div>
+                                </div>
+                                <p class="metric-detail">Casi universal en contribuyentes formales</p>
+                            </div>
+
+                            <div class="metric-card metric-signature">
+                                <div class="metric-header">
+                                    <span class="metric-label">Firmas Electrónicas</span>
+                                    <span class="metric-value">2M+</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-progress" style="width: 85%"></div>
+                                </div>
+                                <p class="metric-detail">Certificados vigentes al cierre de 2024</p>
+                            </div>
+
+                            <div class="metric-card metric-ecommerce">
+                                <div class="metric-header">
+                                    <span class="metric-label">Comercio Electrónico</span>
+                                    <span class="metric-value">$6.1B</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="metric-progress" style="width: 75%"></div>
+                                </div>
+                                <p class="metric-detail">Proyección para 2025 (miles de millones USD)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Tendencias y Proyecciones -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🚀 Tendencias y Proyecciones</h3>
+                        <p class="section-description">
+                            El futuro del e-commerce ecuatoriano es prometedor. Con un CAGR del 20%, se proyecta
+                            alcanzar USD 11,000 millones para 2027. Video commerce, IA y cross-border son las tendencias
+                            que definirán el próximo ciclo de crecimiento.
+                        </p>
+                    </div>
+
+                    <div class="trends-grid-modern">
+                        <div class="trend-card-modern trend-primary">
+                            <div class="trend-icon-large">📊</div>
+                            <h4 class="trend-title">Proyección 2027</h4>
+                            <p class="trend-value-large">USD 11,000M</p>
+                            <p class="trend-detail">CAGR 20% hasta 2027</p>
+                            <p class="trend-description">Crecimiento sostenido impulsado por mayor penetración de
+                                internet y adopción de pagos digitales.</p>
+                        </div>
+                        <div class="trend-card-modern trend-secondary">
+                            <div class="trend-icon-large">📹</div>
+                            <h4 class="trend-title">Video Commerce</h4>
+                            <p class="trend-value-large">+75%</p>
+                            <p class="trend-detail">Crecimiento esperado 2025</p>
+                            <p class="trend-description">TikTok (13.9M cuentas) lidera la revolución del social commerce
+                                y video shopping.</p>
+                        </div>
+                        <div class="trend-card-modern trend-accent">
+                            <div class="trend-icon-large">🌎</div>
+                            <h4 class="trend-title">Cross-border</h4>
+                            <p class="trend-value-large">+21%</p>
+                            <p class="trend-detail">Crecimiento internacional</p>
+                            <p class="trend-description">Compras internacionales representan 45% del mercado y continúan
+                                expandiéndose.</p>
+                        </div>
+                        <div class="trend-card-modern trend-highlight">
+                            <div class="trend-icon-large">🤖</div>
+                            <h4 class="trend-title">Integración IA</h4>
+                            <p class="trend-value-large">55%</p>
+                            <p class="trend-detail">Comercios con IA</p>
+                            <p class="trend-description">32% de consumidores ya usan IA/chatbots en sus compras.
+                                Tendencia en aceleración.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 6: Infraestructura Digital -->
+                <section class="dashboard-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🌐 Infraestructura Digital</h3>
+                        <p class="section-description">
+                            Ecuador cuenta con una infraestructura digital robusta que sustenta el crecimiento del
+                            e-commerce. La cobertura 4G alcanza el 78% del territorio, y el 75% de las ventas online se
+                            realizan desde smartphones.
+                        </p>
+                    </div>
+
+                    <div class="infrastructure-grid">
+                        <div class="stat-card-modern">
+                            <span class="stat-icon-modern">📱</span>
+                            <div class="stat-content-modern">
+                                <span class="stat-number-modern">83.6%</span>
+                                <span class="stat-text-modern">Penetración Internet</span>
+                                <span class="stat-detail-modern">15.29M usuarios conectados</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-modern">
+                            <span class="stat-icon-modern">📶</span>
+                            <div class="stat-content-modern">
+                                <span class="stat-number-modern">78%</span>
+                                <span class="stat-text-modern">Cobertura 4G</span>
+                                <span class="stat-detail-modern">Del territorio nacional</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-modern">
+                            <span class="stat-icon-modern">⚡</span>
+                            <div class="stat-content-modern">
+                                <span class="stat-number-modern">45.54 Mbps</span>
+                                <span class="stat-text-modern">Velocidad Móvil</span>
+                                <span class="stat-detail-modern">Promedio nacional</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-modern">
+                            <span class="stat-icon-modern">📲</span>
+                            <div class="stat-content-modern">
+                                <span class="stat-number-modern">75%</span>
+                                <span class="stat-text-modern">Ventas Mobile</span>
+                                <span class="stat-detail-modern">Desde smartphones</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <div class="dashboard-conclusion">
+                    <h3 class="conclusion-title">Conclusión</h3>
+                    <p class="conclusion-text">
+                        Ecuador se posiciona como un mercado digital en pleno auge. Con un crecimiento sostenido del 22%
+                        anual, infraestructura robusta y adopción masiva de tecnologías emergentes, el e-commerce
+                        ecuatoriano está preparado para alcanzar los USD 11,000 millones en 2027. La clave del éxito
+                        estará en la integración de IA, la expansión del video commerce y la mejora continua de la
+                        experiencia del usuario.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="timeline.js"></script>
+</body>
+
+</html>
