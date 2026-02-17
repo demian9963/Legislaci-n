@@ -1749,3 +1749,343 @@ body {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* Comparison Cards Styles */
+.comparison-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.comparison-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 2px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.comparison-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.comparison-card:hover::before {
+    transform: scaleX(1);
+}
+
+.comparison-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+}
+
+.comparison-flag {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.comparison-country {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.comparison-percentage {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 1rem 0;
+}
+
+.comparison-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Specific country card styles */
+.comparison-china:hover {
+    border-color: #dc2626;
+    box-shadow: 0 20px 60px rgba(220, 38, 38, 0.3);
+}
+
+.comparison-chile:hover {
+    border-color: #2563eb;
+    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+}
+
+.comparison-canada:hover {
+    border-color: #10b981;
+    box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+}
+
+.comparison-ecuador:hover {
+    border-color: #eab308;
+    box-shadow: 0 20px 60px rgba(234, 179, 8, 0.3);
+}
+
+/* ========================================
+   LAW PROPOSAL SECTION STYLES
+   ======================================== */
+
+.law-proposal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.law-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+    border-radius: 24px;
+    border: 2px solid var(--border);
+}
+
+.law-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.law-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Chapter Sections */
+.law-chapter {
+    margin-bottom: 4rem;
+    padding: 2.5rem;
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.law-chapter:hover {
+    border-color: var(--primary);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+}
+
+.chapter-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chapter-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+/* Article Sections */
+.law-article {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.03) 0%, rgba(6, 182, 212, 0.03) 100%);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.law-article:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+    transform: translateX(5px);
+}
+
+.law-article:last-child {
+    margin-bottom: 0;
+}
+
+.article-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.article-content {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.article-content:last-child {
+    margin-bottom: 0;
+}
+
+.article-content strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Article Lists */
+.article-list {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    color: var(--text-secondary);
+}
+
+.article-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+    position: relative;
+}
+
+.article-list li::marker {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Sanction Blocks */
+.sanction-block {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    background: rgba(168, 85, 247, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.sanction-subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sanction-block .article-list {
+    margin-top: 0.5rem;
+}
+
+/* Law Conclusion */
+.law-conclusion {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+    border-radius: 24px;
+    border: 2px solid var(--border);
+    text-align: center;
+}
+
+.law-conclusion .conclusion-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.law-conclusion .conclusion-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.law-conclusion .conclusion-text strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Responsive Design for Law Proposal */
+@media (max-width: 768px) {
+    .law-proposal-container {
+        padding: 1rem;
+    }
+
+    .law-header {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .law-title {
+        font-size: 1.8rem;
+    }
+
+    .law-subtitle {
+        font-size: 1rem;
+    }
+
+    .law-chapter {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .chapter-title {
+        font-size: 1.4rem;
+    }
+
+    .chapter-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .law-article {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .article-title {
+        font-size: 1rem;
+    }
+
+    .article-content {
+        font-size: 0.95rem;
+    }
+
+    .article-list {
+        padding-left: 1.5rem;
+    }
+
+    .law-conclusion {
+        padding: 2rem 1rem;
+    }
+
+    .law-conclusion .conclusion-title {
+        font-size: 1.5rem;
+    }
+
+    .law-conclusion .conclusion-text {
+        font-size: 1rem;
+    }
+}

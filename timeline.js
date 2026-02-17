@@ -1074,18 +1074,20 @@ function initializeCountryComparisonChart() {
     if (!ctx) return;
 
     const data = {
-        labels: ['China', 'Chile', 'Ecuador'],
+        labels: ['China', 'Chile', 'Canadá', 'Ecuador'],
         datasets: [{
             label: 'Nivel de Digitalización (%)',
-            data: [95, 80, 70],
+            data: [95, 88, 85, 78],
             backgroundColor: [
                 'rgba(220, 38, 38, 0.8)',   // Red for China
                 'rgba(37, 99, 235, 0.8)',   // Blue for Chile
+                'rgba(16, 185, 129, 0.8)',  // Green for Canada
                 'rgba(234, 179, 8, 0.8)'    // Yellow for Ecuador
             ],
             borderColor: [
                 'rgba(220, 38, 38, 1)',
                 'rgba(37, 99, 235, 1)',
+                'rgba(16, 185, 129, 1)',
                 'rgba(234, 179, 8, 1)'
             ],
             borderWidth: 2,
